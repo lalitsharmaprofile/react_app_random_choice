@@ -1,0 +1,17 @@
+node -v
+npm -v
+
+npm install -g yarn
+yarn global add live-server
+OR
+npm install -g live-server
+
+Install react:
+yarn global add babel-cli@6.24.1
+npm install -g babel
+
+
+yarn add babel-preset-react@6.24.1 babel-preset-env@2.5.2
+yarn add babel-preset-react babel-preset-env
+babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+live-server public/
