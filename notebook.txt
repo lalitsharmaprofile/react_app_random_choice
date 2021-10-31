@@ -1,7 +1,14 @@
+install nodejs and npm:
+follow online titorials
+
+check version:
 node -v
 npm -v
 
+install yarn package manager:
 npm install -g yarn
+
+install yarn server to serve files:
 yarn global add live-server
 OR
 npm install -g live-server
@@ -10,8 +17,87 @@ Install react:
 yarn global add babel-cli@6.24.1
 npm install -g babel
 
-
 yarn add babel-preset-react@6.24.1 babel-preset-env@2.5.2
 yarn add babel-preset-react babel-preset-env
-babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
-live-server public/
+
+Run react:
+Tab1: babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+
+Tab2: live-server public/
+
+
+Topic: Es6-let const 
+1. var based variables:
+- Can be re-defined and re-declared
+re-defined
+var a = ‘mike’;
+a = ‘amy’;
+
+re-declared
+var a = ‘mike’;
+Var a = ‘amy’;
+
+- Do not have block level scoping , only function level scoping
+
+function getData(){ 
+var a = ‘stuart’ ; 
+console.log(a) //works, since function level scoping
+}
+
+console.log(a); //gives error, since function level scoping
+
+
+and 
+if (True){
+	var a = 'data';
+	console.log(a); //works
+}
+console.log(a); // also works since Do not have block level scoping
+
+
+2. Let and Const based variables
+- can not be re-declared
+let a = 'mike';
+let a = 'jen'; // will give error
+
+const a = 'mike';
+const a = 'jen'; // will give error
+
+- const can not be redefined
+const a = 'mike';
+a = 'Jen'; // will give error
+
+- has function and block level scoping
+
+function getData(){ 
+let a = ‘stuart’ ; 
+console.log(a) //works, since function level scoping
+}
+
+console.log(a); //gives error, since function level scoping
+
+But
+
+if (True){
+	var a = 'data';
+	console.log(a); //works
+}
+console.log(a); // gives error since have block level scoping
+
+
+Issue #1: when changing src/app.js to playgorund/*.js files, requries hard refresh. Can be an issue on prod env since every consumer/customer do not know about it and will see previous code.
+
+#Arrow fx: cannot be annonymous unline regular es5 fx.
+es6 needs a name
+
+* question: scope and how it works
+- In arrow function, this not bound to function.
+- It uses it's parent object to get data for this. reference
+
+*in regular es5 fx, this is bound to object, so not accessible within fx
+for example:
+
+- needs a work around
+const that = this;
+
+refer es6-arrow-functions-2.js
